@@ -40,7 +40,7 @@ export function HeroSection() {
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-balance mb-6">
           Cloud Computing
           <br />
-          <span className="text-primary">Environment</span> &amp; Security
+          <span className="text-primary">Environment</span> and Security
           <br />
           <span className="text-accent">Challenges</span>
         </h1>
