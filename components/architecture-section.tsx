@@ -7,37 +7,68 @@ export function ArchitectureSection() {
   return (
     <section id="architecture" className="py-24 max-w-7xl mx-auto px-6">
       <SectionHeader
-        tag="Section I"
+        tag="Section II"
         title="Cloud Computing Architecture"
-        subtitle="NIST defines cloud computing as a model enabling convenient, ubiquitous, on-demand network access to a shared pool of configurable computing resources that can be rapidly provisioned and released."
+        subtitle="NIST is responsible for providing security in the cloud computing environment and developing standards and guidelines which shows a valuable contribution that offers a better understanding of cloud services and computing technologies."
         pages="183–185"
       />
 
-      <div className="grid md:grid-cols-2 gap-8 items-center mb-16">
+      <div className="grid md:grid-cols-2 gap-8 items-start mb-16">
         <div className="space-y-6">
+          {/* NIST Definition */}
           <div className="bg-card border border-border rounded-2xl p-6">
-            <h3 className="text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+            <div className="flex items-center gap-2 mb-3">
               <span className="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-bold">N</span>
-              NIST Definition
-            </h3>
+              <h3 className="text-xl font-bold text-foreground">NIST Definition</h3>
+            </div>
             <p className="text-muted-foreground leading-relaxed text-sm">
-              Cloud computing is <strong className="text-foreground">authorized through virtualization technology</strong> in which the host system operates an application referred to as a hypervisor that generates one or more Virtual Machines (VM).
+              Cloud computing is a model to enable convenient, ubiquitous and on-demand network access that is the{" "}
+              <strong className="text-foreground">configurable computing resources to shared resources</strong> which can
+              be delivered and provisioned rapidly with minimum managerial interaction.
             </p>
             <div className="mt-3">
-              <PageRef pages="184" label="Source" />
+              <PageRef pages="183" label="Source" />
             </div>
           </div>
 
+          {/* SLA Definition */}
+          <div className="bg-card border border-border rounded-2xl p-6">
+            <h3 className="text-xl font-bold text-foreground mb-3">Service Level Agreements (SLA)</h3>
+            <p className="text-muted-foreground leading-relaxed text-sm">
+              The cloud is the collection of virtualized and inter-connected computers that consists of parallel and
+              distributed systems which can be dynamically presented and provisioned the computing resources based on
+              some{" "}
+              <strong className="text-foreground">Service Level Agreements (SLA)</strong> that is established by the
+              settlement between the customers and service provider.
+            </p>
+            <div className="mt-3">
+              <PageRef pages="183" label="Source" />
+            </div>
+          </div>
+
+          {/* Architecture Layers */}
           <div className="bg-card border border-border rounded-2xl p-6">
             <h3 className="text-xl font-bold text-foreground mb-3">Architecture Layers</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              The effective management of the servers is performed by the combination of three layers:
+            </p>
             <ul className="space-y-3">
               {[
-                { layer: "Virtualization Layer", desc: "Provides rapid elasticity, resource pooling, and location independence — essential for cloud implementation.", color: "bg-primary" },
-                { layer: "Software Layer", desc: "Manages the execution of application workloads and operating systems across virtual machines.", color: "bg-accent" },
-                { layer: "Management Layer", desc: "Implements security rules and monitoring throughout the cloud infrastructure.", color: "bg-secondary" },
-              ].map(({ layer, desc, color }) => (
+                {
+                  layer: "Virtualization Layer",
+                  desc: "Provides the necessary cloud components of rapid elasticity, resource pooling, and location independent. Also, it is an essential element of cloud implementation.",
+                },
+                {
+                  layer: "Software Layer",
+                  desc: "Manages the execution of application workloads and operating systems across virtual machines in the cloud infrastructure.",
+                },
+                {
+                  layer: "Management Layer",
+                  desc: "The ability to implement security rules and monitoring throughout the cloud is done by the management layer.",
+                },
+              ].map(({ layer, desc }) => (
                 <li key={layer} className="flex gap-3">
-                  <span className={`mt-1.5 w-2 h-2 rounded-full flex-shrink-0 ${color}`} />
+                  <span className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0 bg-primary" />
                   <div>
                     <p className="text-foreground font-semibold text-sm">{layer}</p>
                     <p className="text-muted-foreground text-xs leading-relaxed">{desc}</p>
@@ -52,12 +83,16 @@ export function ArchitectureSection() {
         </div>
 
         <div className="space-y-6">
+          {/* Advantages */}
           <div className="bg-card border border-border rounded-2xl p-6">
-            <h3 className="text-xl font-bold text-foreground mb-4">Key Benefits</h3>
+            <h3 className="text-xl font-bold text-foreground mb-4">Advantages of Cloud Computing</h3>
+            <p className="text-xs text-muted-foreground mb-3">
+              The advantages of using cloud computing are:
+            </p>
             <div className="grid grid-cols-2 gap-3">
               {[
                 "Infinite computing resources",
-                "Low cost operations",
+                "Low cost",
                 "Security controls",
                 "Hypervisor protection",
                 "Rapid elasticity",
@@ -69,7 +104,7 @@ export function ArchitectureSection() {
                   key={benefit}
                   className="text-xs text-muted-foreground bg-secondary/50 rounded-lg px-3 py-2 border border-border"
                 >
-                  ✦ {benefit}
+                  {benefit}
                 </div>
               ))}
             </div>
@@ -78,44 +113,53 @@ export function ArchitectureSection() {
             </div>
           </div>
 
+          {/* Architecture overview 4 items */}
           <div className="bg-primary/10 border border-primary/20 rounded-2xl p-6">
             <h3 className="text-lg font-bold text-foreground mb-3">Architecture Overview</h3>
+            <p className="text-xs text-muted-foreground mb-4">
+              This research explains the overview of cloud computing architecture as:
+            </p>
             <div className="space-y-2 text-sm">
               {[
-                ["1", "Cloud Deployment Models", "183–185"],
+                ["1", "Cloud Deployment Models", "185"],
                 ["2", "Cloud Service Models", "185–187"],
                 ["3", "Cloud Basic Characteristics", "187–188"],
                 ["4", "Cloud Security", "188–189"],
               ].map(([num, topic, pg]) => (
                 <div key={num} className="flex items-center justify-between py-2 border-b border-border/50 last:border-0">
                   <span className="text-muted-foreground">
-                    <span className="text-primary font-bold mr-2">{num}.</span>{topic}
+                    <span className="text-primary font-bold mr-2">{num}.</span>
+                    {topic}
                   </span>
                   <PageRef pages={pg} />
                 </div>
               ))}
             </div>
+            <div className="mt-3">
+              <PageRef pages="184" label="Source" />
+            </div>
           </div>
-        </div>
-      </div>
 
-      {/* Cloud providers */}
-      <div className="bg-card border border-border rounded-2xl p-6">
-        <p className="text-sm text-muted-foreground mb-4">
-          Major companies that developed cloud computing systems and provide services:
-        </p>
-        <div className="flex flex-wrap gap-3">
-          {["Microsoft", "Google", "Amazon", "IBM", "VMware", "Rackspace", "Sun Microsystems"].map((co) => (
-            <span
-              key={co}
-              className="px-4 py-1.5 bg-secondary border border-border rounded-full text-sm text-foreground font-medium"
-            >
-              {co}
-            </span>
-          ))}
-        </div>
-        <div className="mt-3">
-          <PageRef pages="183" label="Source" />
+          {/* Cloud providers */}
+          <div className="bg-card border border-border rounded-2xl p-6">
+            <p className="text-sm text-muted-foreground mb-4">
+              Many companies developed cloud computing systems and provide services to a large number of customers by
+              enhancing their services:
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {["Microsoft", "Google", "Amazon", "IBM", "VMware", "Rackspace", "Sun"].map((co) => (
+                <span
+                  key={co}
+                  className="px-4 py-1.5 bg-secondary border border-border rounded-full text-sm text-foreground font-medium"
+                >
+                  {co}
+                </span>
+              ))}
+            </div>
+            <div className="mt-3">
+              <PageRef pages="183" label="Source" />
+            </div>
+          </div>
         </div>
       </div>
     </section>

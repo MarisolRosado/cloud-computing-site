@@ -8,18 +8,21 @@ import { FileCheck2, EyeOff, Zap, ChevronDown } from "lucide-react"
 
 type ChallengeId = "integrity" | "confidentiality" | "availability"
 
-const challenges: Record<ChallengeId, {
-  icon: typeof FileCheck2
-  title: string
-  pages: string
-  color: string
-  bg: string
-  border: string
-  definition: string
-  details: string[]
-  attacks?: string[]
-  subTopics?: { title: string; desc: string }[]
-}> = {
+const challenges: Record<
+  ChallengeId,
+  {
+    icon: typeof FileCheck2
+    title: string
+    pages: string
+    color: string
+    bg: string
+    border: string
+    definition: string
+    details: string[]
+    attacks?: { title: string; desc: string }[]
+    subTopics?: { title: string; desc: string; pages: string }[]
+  }
+> = {
   integrity: {
     icon: FileCheck2,
     title: "Integrity",
@@ -28,20 +31,36 @@ const challenges: Record<ChallengeId, {
     bg: "bg-blue-400/10",
     border: "border-blue-400/30",
     definition:
-      "Data integrity in cloud computing is the preservation of data stored in cloud servers to verify the data is not modified or lost by employing the services of a third party.",
+      "Data integrity in cloud computing is the preservation of data that is stored in cloud server to verify the data is not modified or lost by employing the services of the third party.",
     details: [
-      "Organizations achieve greater confidence to prevent system and data integrity from unauthorized access.",
-      "Authorization mechanisms determine what level of access a specifically authorized customer has to protected resources.",
-      "Data integrity involves three entities: (1) cloud storage provider, (2) data owner, and (3) auditor.",
-      "The data integrity scheme is defined in two phases: preprocessing phase and verification phase.",
-      "The preprocessing phase generates metadata from original data. The verification phase confirms possession proof.",
+      "Organizations can achieve more confidence to prevent system and data integrity from unauthorized access. They provide such mechanisms having greater visibility to determine what or who may modify the system information or data that potentially affects their integrity.",
+      "Authorization mechanism is utilized to determine the system what or which level of access to a specifically authorized customer should have to protected resources controlled through the system.",
+      "Authorization is essential to ensure only the valid customers can access or interact with the data due to increasing the number of access points and customers in cloud computing environment.",
+      "The data integrity involves three main entities: (1) a cloud storage provider to whom outsourced the data; (2) owner of data who outsources his data; and (3) auditor who ensures the data integrity.",
+      "The preprocessing phase includes the preprocessed data and generates some additional metadata. After that, it outsources the data and metadata to the cloud storage provider.",
+      "The verification phase includes the auditor sending a challenge request to the cloud storage provider that generates possession proof with the data and metadata, and offers it to the auditor.",
     ],
     attacks: [
-      "Tag forgery attack: Cloud storage provider hides data damage and avoids auditing challenge.",
-      "Data deletion attack: Provider generates a legal proof of possession while original data is entirely deleted.",
-      "Replace attack: Provider replaces deleted/corrupted data blocks and tags using another valid pair.",
-      "Pollution attack: Dishonest server uses correct data in response but offers corrupted blocks in repair phase.",
-      "Data leak attack: Attacker extracts stored data during the proofing protocol with wiretapping techniques.",
+      {
+        title: "Tag Forgery Attack",
+        desc: "A malicious cloud storage provider tries to hide the data damage of customers and avoid the auditing challenge.",
+      },
+      {
+        title: "Data Deletion Attack",
+        desc: "The cloud storage provider may proceed the challenge through generating a legal proof of possession with the tags in which the original data may have been entirely deleted.",
+      },
+      {
+        title: "Replace Attack",
+        desc: "The cloud storage provider may replace the data blocks of deleted or corrupted pair and respectively tags using another valid pair as the response of challenge, which deceives the verifier.",
+      },
+      {
+        title: "Pollution Attack",
+        desc: "The correct data is employed by the dishonest server in the generation of response against a challenge but it offers corrupted or useless blocks in the repair phase.",
+      },
+      {
+        title: "Data Leak Attack",
+        desc: "The extraction of stored data by the attacker during the proofing protocol with wiretapping technique.",
+      },
     ],
   },
   confidentiality: {
@@ -52,26 +71,30 @@ const challenges: Record<ChallengeId, {
     bg: "bg-emerald-400/10",
     border: "border-emerald-400/30",
     definition:
-      "Confidentiality refers to keeping the customer's data secret in the cloud computing system — only authorized customers or systems can access the data.",
+      "Confidentiality refers to keeping the customer's data secret in the cloud computing system and only the authorized customers or systems can able to access the data.",
     details: [
-      "Cloud computing services are basically in public clouds and have more threads compared to those hosted in private data centers.",
-      "Two basic approaches to achieve confidentiality: cryptography and physical isolation.",
-      "Virtual LAN and middle boxes (packet filters, firewall) should be deployed to accomplish virtual physical isolation.",
-      "VPN Cubed by CohesiveFT offers a security boundary for IT infrastructure inside single, multiple, or hybrid cloud data centers.",
-      "Confidentiality enhanced by encrypting data before transfer into cloud storage — TC3 is successfully employed.",
+      "Cloud computing provides (e.g. applications and its infrastructures) that are basically in public clouds — they have more threats on systems or applications as compared to those hosted in private data centers.",
+      "It is the fundamental requirement to keep the customer data secret ever considering the increasing number of applications, customers and devices involved.",
+      "Vendors of cloud computing are extensively adopted two basic approaches: cryptography and physical isolation to achieve the confidentiality.",
+      "The cloud computing provides services and data that are transmitted through the public network and it cannot achieve physical isolation. Virtual LAN and middle boxes such as packet filters and firewall should be deployed to accomplish virtual physical isolation.",
+      "VPN Cubed released by CohesiveFT offers a security boundary for the IT infrastructure although it is inside single, multiple or hybrid cloud data center ecosystems.",
+      "Confidentiality is also enhanced by encrypting the data before transfer into cloud storage — TC3 is successfully employed in this approach.",
     ],
     subTopics: [
       {
         title: "Multi-Tenancy",
-        desc: "Cloud resources are shared including data, memory, networks, and programs. This presents a number of confidentiality and privacy threats at application, host, and network levels.",
+        desc: "Multi-tenancy refers to the characteristics of cloud resources that are shared including the data, memory, networks and programs. Cloud computing is like a business model where multiple customers can access same shared resources at the application level, host level, and network level. Multi-tenancy presents a number of confidentiality and privacy threats.",
+        pages: "191",
       },
       {
         title: "Data Remanence",
-        desc: "Data represented in residual that can be unintentionally removed or erased due to the lack of hardware separation among customers, potentially disclosing private data.",
+        desc: "The data is represented in residual that can be unintentionally removed or erased due to the lack of hardware separation among different customers and virtual separation of the logical drives on a single cloud infrastructure — it may lead to the unintentional disclosure of private data.",
+        pages: "191",
       },
       {
-        title: "Application Security & Privacy",
-        desc: "Data confidentiality is associated with user authentication. Weak authentication can lead to unauthorized cloud access, creating issues of data privacy and confidentiality.",
+        title: "Application Security and Privacy",
+        desc: "Data confidentiality is associated with the user authentication. To protect the customer's account from hackers is a large problem of controlling the access of objects including software, devices and memory. If the customer used weak authentication, access to the account can lead to unauthorized access to the cloud.",
+        pages: "191",
       },
     ],
   },
@@ -83,27 +106,31 @@ const challenges: Record<ChallengeId, {
     bg: "bg-orange-400/10",
     border: "border-orange-400/30",
     definition:
-      "Availability in cloud computing ensures that authorized customers can access system properties at all times on demand — including applications and all infrastructure.",
+      "Availability in cloud computing including applications and its infrastructure is to ensure that the authorized customers can access the property of system at all time on demand.",
     details: [
-      "Cloud computing models (IaaS, PaaS, SaaS) allow customers to access services and applications from anyplace at any time.",
-      "Amazon web services offer S3 and EC2 based on VM — called Skytap. Xen provides virtual lab management depending on hypervisors (Xen, VMware, Microsoft Hyper-V).",
-      "Xen VMs offer separated storage virtualization, memory virtualization, and machine/CPU virtualization.",
-      "Vendors provide ability to filter and block traffic based on port and IP address — but not equivalent to network security controls in most enterprises.",
-      "Most cloud vendors (Google, Amazon) provide geographic redundancy allowing high availability on a single provider.",
-      "The cloud system is capable of carrying operations even in the presence of security breaches or authority misbehaviors.",
+      "Cloud computing models (IaaS, PaaS and SaaS) allow customers to access the services and applications from anyplace at any time.",
+      "Vendors of cloud computing offer the cloud platform and infrastructure that is based on VM. The Amazon web services offer S3, EC2 that is based on VM called Skytap — and Xen provides virtual lab management application depends on the hypervisor (Xen, VMware and Microsoft Hyper-V).",
+      "Xen virtual machine offered by Amazon is able to provide separated storage virtualization, memory virtualization, machine/CPU virtualization etc. where a large number of commodity PCs are hosted.",
+      "Cloud service providers can split resources (memory, capacity, storage, CPU cycle) on demand from Amazon based on usage expense in the form of each unit.",
+      "Vendors provide the ability to filter and block the traffic based on port and IP address to secure systems — but these services are not equal to the network security controls in most cloud enterprises.",
+      "Most cloud vendors (Google, Amazon) provide geographic redundancy in their cloud and hopefully allow high availability on a single provider.",
+      "The cloud system is capable of carrying operations even in the security breaches possibilities or authorities misbehave.",
     ],
     subTopics: [
       {
         title: "Distributed System Security Objectives",
-        desc: "Ensure data confidentiality, maintain security level when adding/removing resources, prevent data leakage between applications at virtual level, maintain integrity provided by services.",
+        desc: "Ensure the data confidentiality among the participating systems. When adding or removing resources at a physical level, maintain the exactly same security level. Make sure there is no data leakage among different applications during the separation of processes and data in the cloud at the virtual level.",
+        pages: "192",
       },
       {
         title: "Non-Repudiation",
-        desc: "Authenticate different communicating customer identities and ensure data delivery and origin for banking purposes to ensure non-repudiation.",
+        desc: "Authenticate the different communicating customer identities and if necessary the data delivery and origin for the purposes of banking to ensure non-repudiation.",
+        pages: "192",
       },
       {
-        title: "Geographic Redundancy",
-        desc: "Most cloud vendors provide geographic redundancy in their cloud, hopefully allowing high availability on a single provider under security breach possibilities.",
+        title: "Data Availability Assurance",
+        desc: "Ensure the availability of data or systems communicated among the participating systems. The integrity of data or systems is maintained by preventing any modification or loss from unauthorized access between the participating systems communicated.",
+        pages: "192",
       },
     ],
   },
@@ -120,9 +147,7 @@ function AccordionItem({ title, content }: { title: string; content: string }) {
         {title}
         <ChevronDown className={`w-4 h-4 transition-transform flex-shrink-0 ml-2 ${open ? "rotate-180" : ""}`} />
       </button>
-      {open && (
-        <p className="text-sm text-muted-foreground leading-relaxed pb-4">{content}</p>
-      )}
+      {open && <p className="text-sm text-muted-foreground leading-relaxed pb-4">{content}</p>}
     </div>
   )
 }
@@ -138,7 +163,7 @@ export function SecurityChallengesSection() {
         <SectionHeader
           tag="Section III"
           title="Security Challenges in Cloud Computing"
-          subtitle="Cloud computing infrastructure needs assessment of risk in areas such as integrity, confidentiality, privacy, auditing, reliability, and availability. These major security aspects are required to secure data, hardware, and software resources."
+          subtitle="Cloud computing infrastructure needs the assessment of risk in areas such as integrity, confidentiality, privacy, auditing, reliability and availability. Essentially, the security has major aspects of integrity, confidentiality and availability that are utilized in designing the adequate security system."
           pages="189–192"
         />
 
@@ -197,7 +222,9 @@ export function SecurityChallengesSection() {
               <ul className="space-y-3">
                 {current.details.map((d, i) => (
                   <li key={i} className="flex gap-3 text-sm text-muted-foreground">
-                    <span className={`mt-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${current.bg} ${current.color}`}>
+                    <span
+                      className={`mt-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${current.bg} ${current.color}`}
+                    >
                       {i + 1}
                     </span>
                     <span className="leading-relaxed">{d}</span>
@@ -211,33 +238,57 @@ export function SecurityChallengesSection() {
           <div className="lg:col-span-2 space-y-6">
             {current.attacks && (
               <div className="bg-card border border-destructive/20 rounded-2xl p-6">
-                <p className="text-sm font-bold text-destructive uppercase tracking-wider mb-4">Attack Vectors</p>
+                <p className="text-sm font-bold text-destructive uppercase tracking-wider mb-4">
+                  Attack Vectors <PageRef pages="190–191" />
+                </p>
                 <div className="space-y-1">
                   {current.attacks.map((atk) => (
-                    <AccordionItem
-                      key={atk}
-                      title={atk.split(":")[0]}
-                      content={atk.split(":").slice(1).join(":").trim()}
-                    />
+                    <AccordionItem key={atk.title} title={atk.title} content={atk.desc} />
                   ))}
-                </div>
-                <div className="mt-3">
-                  <PageRef pages="190–191" label="Source" />
                 </div>
               </div>
             )}
             {current.subTopics && (
               <div className="bg-card border border-border rounded-2xl p-6 space-y-4">
                 <p className={`text-sm font-bold uppercase tracking-wider ${current.color}`}>Sub-Topics</p>
-                {current.subTopics.map(({ title, desc }) => (
+                {current.subTopics.map(({ title, desc, pages }) => (
                   <div key={title} className={`${current.bg} border ${current.border} rounded-xl p-4`}>
-                    <p className={`text-sm font-bold ${current.color} mb-1`}>{title}</p>
+                    <div className="flex items-center justify-between mb-1">
+                      <p className={`text-sm font-bold ${current.color}`}>{title}</p>
+                      <PageRef pages={pages} />
+                    </div>
                     <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
                   </div>
                 ))}
-                <PageRef pages={current.pages} />
               </div>
             )}
+
+            {/* Table II summary */}
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <div className="flex items-center justify-between mb-3">
+                <p className="text-sm font-bold text-foreground">Distributed System Security</p>
+                <PageRef pages="192" />
+              </div>
+              <p className="text-xs text-muted-foreground leading-relaxed mb-3">
+                The multiple customer distributed environment suggests security challenges based on which level of user
+                operates — physical, virtual, or application (Table II).
+              </p>
+              <div className="space-y-2">
+                {[
+                  { level: "Physical Level", service: "Physical datacenter" },
+                  { level: "Virtual Level", service: "IaaS, PaaS" },
+                  { level: "Application Level", service: "SaaS" },
+                ].map(({ level, service }) => (
+                  <div
+                    key={level}
+                    className="flex items-center justify-between text-xs py-1.5 border-b border-border/50 last:border-0"
+                  >
+                    <span className="text-muted-foreground font-medium">{level}</span>
+                    <span className="text-primary">{service}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

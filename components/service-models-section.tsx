@@ -17,18 +17,20 @@ const services = [
     bg: "bg-blue-400/10",
     pages: "186",
     level: "Foundation",
-    summary: "IaaS offers virtualized computing resources over the internet and deals with hardware infrastructure such as servers, storage, processors, data centers, networks, and various other infrastructure resources as a service.",
+    summary:
+      "IaaS offers the virtualized computing resources over the internet and deals with the hardware infrastructure such as servers, storage, processor, data center, network and various other infrastructure resources as a service where the user is able to run and deploy arbitrary software.",
     benefits: [
-      "Minimizes initial cost of purchasing hardware (network devices, servers, processors)",
-      "Hosted by service providers who handle resiliency planning and system maintenance backup",
-      "Customer controls deployed applications, storage, operating systems",
-      "Highly scalable resources fixed on demand",
-      "Workloads are experimental, temporary, or change unexpectedly",
-      "Includes desktop virtualization, dynamic scaling, administrative task automation",
+      "Can significantly minimize initial cost of companies to purchase computing hardware such as network devices, servers and processing power.",
+      "Service providers host user applications and handle different jobs like resiliency planning and system maintenance backup.",
+      "Customer has control over deployed applications, storage, operating system and limited control to select networking components like host firewall.",
+      "The platform of IaaS provides the highly scalable resources which can be fixed on demand.",
+      "Makes the platform more suited for workloads that are experimental, temporary, or change unexpectedly.",
+      "Characteristics include desktop virtualization, dynamic scaling, administrative tasks automation and policy-based services.",
     ],
-    includes: ["Storage", "Web services", "Server hosting", "Virtual Machines", "Backup & Recovery"],
-    vendors: ["VMware", "Hyper-V", "Terremark", "Amazon EC2", "Dropbox", "OpenStack"],
-    security: "Security focus: VM monitor, intrusion detection, firewall, and prevention (IPS/IDS).",
+    includes: ["Storage", "Web services", "Server hosting", "Virtual Machines (VM)", "Backup and recovery"],
+    vendors: ["VMware", "Hyper-V", "Terremark", "Amazon EC2", "Dropbox", "Sun Microsystems", "OpenStack"],
+    security:
+      "Security focus: VM monitor, intrusion detection, firewall and prevention (IPS/IDS). Network services provided in terms of Domain Name System (DNS) and load balancing.",
   },
   {
     id: "paas",
@@ -40,18 +42,20 @@ const services = [
     bg: "bg-cyan-400/10",
     pages: "186–187",
     level: "Middleware",
-    summary: "PaaS is the middleware of the service model and provides services in the form of programs, frameworks, integrated development environments, and development tools hosted on the server provider.",
+    summary:
+      "PaaS is the middleware of the service model and it provides the services in the form of programs, framework, integrated development environment, and development tools hosted on the server provider.",
     benefits: [
-      "Delivers complete software development lifecycle management (planning, design, develop, deploy, test, maintenance)",
-      "Customer only controls deployed applications and configurations",
-      "Transfers more costs from hardware investment to operational expense",
-      "Provides standards for applications based on developer requirements",
-      "Includes logging, code instrumentation, and reporting",
-      "Supports auto-provisioning and scalability of underlying infrastructure",
+      "Delivers a service to developers providing software development lifecycle management: planning, design, develop an application, deployment, testing and maintenance.",
+      "Customer has only access to control the deployed applications and configurations of possible hosting environment instead of controlling servers, storage, network and operating system.",
+      "Customers using PaaS model transfer more costs from hardware investment to the operational expense.",
+      "Vendor offers: application standards, logging, code instrumentation and reporting, redundancy and security.",
+      "Supports virtual development environment, management interface and API, multi-tenancy.",
+      "Provides auto-provisioning and scalability of the underlying infrastructure.",
     ],
-    includes: ["Databases", "Directory services", "Business intelligence", "Testing & Dev tools"],
+    includes: ["Databases", "Directory services", "Business intelligence", "Testing and development tools"],
     vendors: ["Microsoft Azure", "Apprenda", "Stackato", "VMware", "Google App Engine", "NYSE Capital"],
-    security: "VM employed as catalyst. Must authenticate data transfers and maintain application integrity.",
+    security:
+      "VM is employed in PaaS to act as a catalyst and it is required to protect against cloud malware attacks. It is important to include valid authentication checks during data transfer across overall network channels.",
   },
   {
     id: "saas",
@@ -63,18 +67,26 @@ const services = [
     bg: "bg-teal-400/10",
     pages: "187",
     level: "Application",
-    summary: "SaaS is the collection of remotely hosted applications made available by the service provider for customers on demand over the internet. It has the dominant cloud market as underlying technology.",
+    summary:
+      "SaaS model is the collection of remotely hosted applications that are made available by the service provider for the customers on demand on the internet. It has the dominant cloud market as underlying technology that supports service oriented architecture and web services.",
     benefits: [
-      "Easier administration for enterprise users",
-      "Universal accessibility from any device",
-      "Easy collaboration across teams",
-      "Software compatibility maintained by provider",
-      "Auto patch and updates management",
-      "Offers similar benefits as internally operated software at very low cost",
+      "Easier administration.",
+      "Universal accessibility.",
+      "Easily collaboration.",
+      "Software compatibility.",
+      "Auto patch and updates management.",
+      "Allows enterprises to get similar benefits of internally operated commercially licensed software.",
     ],
-    includes: ["Virtual desktop", "Email", "Office automation", "Business apps", "Document & content management"],
-    vendors: ["Salesforce", "Google Apps", "Office 365", "QuickBooks Online"],
-    security: "Security concerns: application vulnerabilities, system availability, and insider breaches causing data loss.",
+    includes: [
+      "Virtual desktop",
+      "Email",
+      "Office automation",
+      "Business apps",
+      "Document and content management",
+    ],
+    vendors: ["Salesforce", "Google App", "Office 365", "QuickBooks Online"],
+    security:
+      "Security concerns: application vulnerabilities, system availability and insider breaches that bring the loss of sensitive information or data.",
   },
 ]
 
@@ -88,20 +100,22 @@ export function ServiceModelsSection() {
       <SectionHeader
         tag="Section II-B"
         title="Cloud Service Models"
-        subtitle="Cloud computing architecture has a set of services used to access configurable computing resources on demand, dynamically scalable, virtualized, and multi-tenant. Three key service models exist, each offering different levels of control and abstraction."
+        subtitle="Cloud computing architecture has a set of services which are used to access the configurable computing resources (applications, storage, servers, networks and services) on demand, dynamically scalable, virtualized and multi-tenant that offers a self-service over the internet."
         pages="185–187"
       />
 
-      {/* Pyramid visual */}
       <div className="grid lg:grid-cols-2 gap-12 items-start">
         <div>
           <Image
             src="/images/service-models.png"
-            alt="Cloud Service Models IaaS PaaS SaaS Pyramid"
+            alt="Cloud Service Models IaaS PaaS SaaS — Fig. 3 (p.186)"
             width={600}
             height={380}
-            className="rounded-2xl border border-border w-full object-cover mb-6"
+            className="rounded-2xl border border-border w-full object-cover mb-2"
           />
+          <p className="text-xs text-muted-foreground text-center mb-6">
+            Cloud service models — Fig. 3 <PageRef pages="186" />
+          </p>
 
           {/* Tab selector */}
           <div className="flex gap-2">
@@ -145,7 +159,7 @@ export function ServiceModelsSection() {
           <div>
             <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">Key Benefits</p>
             <ul className="space-y-2">
-              {current.benefits.slice(0, 4).map((b) => (
+              {current.benefits.map((b) => (
                 <li key={b} className="flex gap-2 text-sm text-muted-foreground">
                   <span className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${current.color}`} />
                   {b}
@@ -158,7 +172,10 @@ export function ServiceModelsSection() {
             <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Includes</p>
             <div className="flex flex-wrap gap-2">
               {current.includes.map((inc) => (
-                <span key={inc} className={`text-xs px-2.5 py-1 rounded-full border ${current.border} ${current.bg} ${current.color}`}>
+                <span
+                  key={inc}
+                  className={`text-xs px-2.5 py-1 rounded-full border ${current.border} ${current.bg} ${current.color}`}
+                >
                   {inc}
                 </span>
               ))}
@@ -169,7 +186,10 @@ export function ServiceModelsSection() {
             <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Known Vendors</p>
             <div className="flex flex-wrap gap-2">
               {current.vendors.map((v) => (
-                <span key={v} className="text-xs px-2.5 py-1 rounded-full bg-secondary border border-border text-muted-foreground">
+                <span
+                  key={v}
+                  className="text-xs px-2.5 py-1 rounded-full bg-secondary border border-border text-muted-foreground"
+                >
                   {v}
                 </span>
               ))}
@@ -183,12 +203,69 @@ export function ServiceModelsSection() {
         </div>
       </div>
 
+      {/* Comparison table from paper — Table I */}
+      <div className="mt-12 bg-card border border-border rounded-2xl p-6 overflow-x-auto">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-base font-bold text-foreground">
+            Table I: Vendor Used Cloud Deployment and Service Models
+          </h3>
+          <PageRef pages="187" label="Source" />
+        </div>
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-border">
+              <th className="text-left text-muted-foreground font-semibold py-2 pr-4">Service / Deployment</th>
+              <th className="text-left text-blue-400 font-semibold py-2 pr-4">IaaS</th>
+              <th className="text-left text-cyan-400 font-semibold py-2 pr-4">PaaS</th>
+              <th className="text-left text-teal-400 font-semibold py-2">SaaS</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border">
+            {[
+              {
+                model: "Public Cloud",
+                iaas: "Rackspace, Amazon EC2",
+                paas: "VMware, Microsoft Azure, CloudFoundry.com, Google App Engine",
+                saas: "Office 365, QuickBooks online, Salesforce.com",
+              },
+              {
+                model: "Private Cloud",
+                iaas: "OpenStack, Hyper-V, VMware, CloudStack",
+                paas: "Stackato, Apprenda",
+                saas: "Cisco WebEx",
+              },
+              {
+                model: "Hybrid Cloud",
+                iaas: "Rackspace, Custom",
+                paas: "Cloud Foundry, Custom",
+                saas: "Rackspace",
+              },
+              {
+                model: "Community Cloud",
+                iaas: "NYSE Capital",
+                paas: "NYSE Capital",
+                saas: "Salesforce",
+              },
+            ].map((row) => (
+              <tr key={row.model}>
+                <td className="py-3 pr-4 text-foreground font-medium">{row.model}</td>
+                <td className="py-3 pr-4 text-muted-foreground">{row.iaas}</td>
+                <td className="py-3 pr-4 text-muted-foreground">{row.paas}</td>
+                <td className="py-3 text-muted-foreground">{row.saas}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
       {/* Comparison note */}
-      <div className="mt-10 bg-card border border-border rounded-2xl p-6">
+      <div className="mt-6 bg-card border border-border rounded-2xl p-6">
         <p className="text-sm text-muted-foreground leading-relaxed">
-          <strong className="text-foreground">Comparison:</strong> IaaS provides greater customer control over security than PaaS and SaaS.
-          PaaS provides better extensibility and customer control. SaaS depends on integrated functionality with minimum customer control and extensibility.
-          The security pressure of the SaaS model varies on the cloud provider due to the degree of abstraction.{" "}
+          <strong className="text-foreground">Comparison:</strong> IaaS provides greater customer or tenant control
+          over security than PaaS and SaaS. While the PaaS infrastructure provides better extensibility and customer
+          control, the SaaS model is depending on integrated functionality with minimum customer control and
+          extensibility. The security pressure of SaaS model varies on the cloud provider due to the degree of
+          abstraction.{" "}
           <PageRef pages="187" />
         </p>
       </div>
