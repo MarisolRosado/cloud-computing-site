@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { SectionHeader } from "./section-header"
 import { PageRef } from "./page-ref"
 import { Cpu, Share2, HardDrive, Building2, Network } from "lucide-react"
@@ -112,6 +113,16 @@ export function CloudComponentsSection() {
           subtitle="The cloud computing is deployed on the basic components and these components consist of wide range of services which can be used in the overall internet. In this study, five important components are considered."
           pages="187–188"
         />
+
+        <div className="mb-8">
+          <Image
+            src="/images/pastel_cloud_components.png"
+            alt="Basic Cloud Components Visualization"
+            width={1200}
+            height={400}
+            className="rounded-2xl border border-border w-full object-cover shadow-md"
+          />
+        </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Left: component list */}

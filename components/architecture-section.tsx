@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { SectionHeader } from "./section-header"
 import { PageRef } from "./page-ref"
 
@@ -28,6 +29,17 @@ export function ArchitectureSection() {
           There are significant barriers to adopting cloud computing like security issues regarding the privacy, compliance and legal matters because it is relatively new computing model having a great deal of the uncertainty regarding the security of all levels such as <strong className="text-foreground">host, network, data levels, and application</strong> can be accomplished.<Cite refs="7" /> The management of data and services is an important concern when the databases and application software are moves the cloud to the large data centers.
         </p>
         <div className="mt-4"><PageRef pages="183" label="p." /></div>
+      </div>
+
+      {/* Architecture Showcase Image */}
+      <div className="mb-8">
+        <Image
+          src="/images/pastel_cloud_architecture.png"
+          alt="Cloud Computing Architecture Showcase"
+          width={1200}
+          height={400}
+          className="rounded-2xl border border-border w-full object-cover shadow-md"
+        />
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 items-start mb-8">

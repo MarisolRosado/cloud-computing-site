@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { SectionHeader } from "./section-header"
 import { PageRef } from "./page-ref"
 
@@ -12,6 +13,17 @@ export function TTPSection() {
         subtitle={`"Trusted third party in cryptography helps to facilitate the interaction among the two parties and reviews all crucial operations among them. The cloud computing environment required the TTP services that exhibits to establish the essential trust level and offers an ideal solution to maintain the authenticity, integrity and confidentiality of communication and data."`}
         pages="192–193"
       />
+
+      {/* Trusted Crypto Showcase Image */}
+      <div className="mb-8">
+        <Image
+          src="/images/pastel_trusted_crypto.png"
+          alt="Trusted Third Party Cryptography Visualization"
+          width={1200}
+          height={400}
+          className="rounded-2xl border border-border w-full object-cover shadow-md"
+        />
+      </div>
 
       {/* TTP Overview */}
       <div className="grid md:grid-cols-2 gap-6 mb-8">
