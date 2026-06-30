@@ -1,4 +1,5 @@
-import { ExternalLink, BookOpen } from "lucide-react"
+import Link from "next/link"
+import { ExternalLink, BookOpen, ArrowRight, Sparkles } from "lucide-react"
 import { PageRef } from "./page-ref"
 
 const externalLinks = [
@@ -107,81 +108,142 @@ const allRefs = [
 ]
 
 export function ReferencesSection() {
-  return (
-    <section id="references" className="py-24 bg-card/30">
-      <div className="max-w-7xl mx-auto px-6">
+  // Show only top 6 featured citations on the landing page to keep it clean and dynamic
+  const featuredRefs = allRefs.slice(0, 6);
 
-        <div className="mb-12 text-center">
-          <span className="inline-block text-xs font-bold tracking-widest uppercase text-primary bg-primary/10 px-4 py-1.5 rounded-full mb-4">
-            Sources
+  return (
+    <section id="references" className="py-24 relative overflow-hidden bg-gradient-to-b from-card/20 via-background to-card/40 border-t border-border/50">
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+        <div className="mb-14 text-center">
+          <span className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase text-primary bg-primary/15 border border-primary/30 px-4 py-1.5 rounded-full mb-4 shadow-sm shadow-primary/20">
+            <Sparkles className="w-3.5 h-3.5 animate-pulse text-accent" />
+            Sources &amp; References Bright
           </span>
-          <h2 className="text-4xl font-bold text-foreground mb-4 text-balance">References</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto text-sm">
-            All content is taken directly from the case study paper. Below are all 59 in-paper references and 8 external links for further reading.
+          <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 tracking-tight bg-gradient-to-r from-foreground via-primary/90 to-accent bg-clip-text">
+            Featured Citations In Line
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base italic">
+            &ldquo;We trimmed the list to make it fast, with research built to hold and last! <br />
+            Explore core sources right below, or visit our portal where seventy-five glow.&rdquo;
           </p>
         </div>
 
+        {/* Dedicated Banner pointing to the separate /references page */}
+        <div className="mb-14 relative group rounded-3xl p-[2px] bg-gradient-to-r from-primary via-accent to-primary background-animate shadow-2xl shadow-primary/10 hover:shadow-primary/25 transition-all duration-500">
+          <div className="bg-card/95 backdrop-blur-xl rounded-[23px] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+            <div className="space-y-3 max-w-3xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-accent/20 text-accent text-xs font-semibold uppercase tracking-wider">
+                ✨ Specialized Hub Online
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                Seeking all fifty-nine citations too, plus modern web standards just for you?
+              </h3>
+              <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+                We designed a <strong className="text-primary font-semibold">Comprehensive Citations Portal</strong> featuring every paper reference neatly categorized, plus modern cloud links directly to AWS, Azure, NIST, and Gartner!
+              </p>
+            </div>
+            <Link
+              href="/references"
+              className="group/btn flex-shrink-0 inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-accent text-background font-bold text-base shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/50 hover:scale-105 transition-all duration-300"
+            >
+              <BookOpen className="w-5 h-5" />
+              <span>Explore Citations Hub!</span>
+              <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+
         {/* APA Main Citation */}
-        <div className="bg-primary/10 border border-primary/30 rounded-2xl p-6 mb-10">
-          <p className="text-xs font-bold text-primary uppercase tracking-wider mb-2">Main Source — APA Citation</p>
-          <p className="text-sm text-foreground leading-relaxed">
+        <div className="bg-gradient-to-br from-primary/15 via-card/80 to-accent/10 border border-primary/40 rounded-2xl p-7 mb-12 shadow-xl backdrop-blur-md hover:border-primary/60 transition-all duration-300">
+          <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
+            <p className="text-xs font-bold text-primary uppercase tracking-widest flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
+              Main Source — APA Citation
+            </p>
+            <PageRef pages="183–195" label="Full Paper" />
+          </div>
+          <p className="text-base text-foreground font-medium leading-relaxed">
             Mushtaq, M. F., Akram, U., Khan, I., Khan, S. N., Shahzad, A., &amp; Ullah, A. (2017).{" "}
-            <em>Cloud Computing Environment and Security Challenges: A Review.</em>{" "}
+            <em className="text-primary font-semibold">Cloud Computing Environment and Security Challenges: A Review.</em>{" "}
             International Journal of Advanced Computer Science and Applications (IJACSA), 8(10), 183–195.{" "}
             <a
               href="https://thesai.org/Publications/ViewPaper?Volume=8&Issue=10&Code=IJACSA&SerialNo=25"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary underline underline-offset-2 hover:text-accent"
+              className="text-accent hover:text-primary font-semibold underline underline-offset-4 ml-1 inline-flex items-center gap-1 transition-colors"
             >
-              https://thesai.org
+              https://thesai.org <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </p>
-          <div className="mt-3 flex items-center gap-2">
-            <PageRef pages="183–195" label="Full paper" />
-            <span className="text-xs text-muted-foreground">Faculty of Computer Science and IT, Universiti Tun Hussein Onn Malaysia (UTHM)</span>
+          <div className="mt-4 pt-3 border-t border-border/40 flex items-center justify-between text-xs text-muted-foreground">
+            <span>Faculty of Computer Science and IT, Universiti Tun Hussein Onn Malaysia (UTHM)</span>
+            <span className="text-primary font-mono font-semibold">IJACSA 2017</span>
           </div>
         </div>
 
-        {/* External Links */}
-        <h3 className="text-xl font-bold text-foreground mb-5 flex items-center gap-2">
-          <ExternalLink className="w-5 h-5 text-primary" />
-          External Links &amp; Resources
+        {/* Featured 6 references */}
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-2xl font-bold text-foreground flex items-center gap-2.5">
+            <BookOpen className="w-6 h-6 text-primary" />
+            Top Core References (6 of 59)
+          </h3>
+          <Link
+            href="/references"
+            className="text-sm font-semibold text-primary hover:text-accent inline-flex items-center gap-1.5 transition-colors"
+          >
+            See All 59 Fine <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-4 mb-14">
+          {featuredRefs.map(({ num, text, page }) => (
+            <div
+              key={num}
+              className="group bg-card/80 backdrop-blur-sm border border-border/70 hover:border-primary/50 rounded-2xl p-5 flex gap-4 shadow-sm hover:shadow-md hover:bg-card transition-all duration-300"
+            >
+              <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30 text-primary text-sm font-extrabold flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-primary group-hover:text-background transition-all">
+                {num}
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="text-sm text-foreground/90 leading-relaxed font-medium group-hover:text-foreground transition-colors">{text}</p>
+                <div className="mt-3 flex items-center justify-between">
+                  <PageRef pages={page} />
+                  <span className="text-[11px] font-mono text-muted-foreground group-hover:text-primary/80 transition-colors">Foundation Citation</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Featured External Links */}
+        <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2.5">
+          <ExternalLink className="w-6 h-6 text-accent" />
+          Featured External Web Links
         </h3>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {externalLinks.map(({ label, url, desc }) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {externalLinks.slice(0, 4).map(({ label, url, desc }) => (
             <a
               key={url}
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-card border border-border rounded-xl p-4 hover:border-primary/50 hover:bg-primary/5 transition-all"
+              className="group bg-card/60 backdrop-blur-sm border border-border/70 rounded-2xl p-5 hover:border-accent hover:bg-gradient-to-br hover:from-accent/10 hover:to-primary/5 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
-              <p className="text-sm font-semibold text-primary group-hover:underline mb-1 leading-snug">{label}</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{desc}</p>
-            </a>
-          ))}
-        </div>
-
-        {/* All 59 references */}
-        <h3 className="text-xl font-bold text-foreground mb-5 flex items-center gap-2">
-          <BookOpen className="w-5 h-5 text-primary" />
-          All 59 In-Paper References
-          <PageRef pages="194–195" />
-        </h3>
-        <div className="grid md:grid-cols-2 gap-3">
-          {allRefs.map(({ num, text, page }) => (
-            <div key={num} className="bg-card border border-border rounded-xl p-4 flex gap-3">
-              <span className="w-7 h-7 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-                {num}
-              </span>
-              <div className="min-w-0">
-                <p className="text-xs text-muted-foreground leading-relaxed">{text}</p>
-                <div className="mt-1">
-                  <PageRef pages={page} />
+              <div>
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <p className="text-base font-bold text-foreground group-hover:text-accent transition-colors leading-snug">{label}</p>
+                  <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-accent flex-shrink-0 mt-1 transition-colors" />
                 </div>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-4">{desc}</p>
               </div>
-            </div>
+              <span className="text-xs font-semibold text-primary group-hover:text-accent inline-flex items-center gap-1 mt-auto">
+                Visit External Page &rarr;
+              </span>
+            </a>
           ))}
         </div>
 
@@ -189,3 +251,4 @@ export function ReferencesSection() {
     </section>
   )
 }
+

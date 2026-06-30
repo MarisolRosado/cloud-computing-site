@@ -123,7 +123,7 @@ export function ServiceModelsSection() {
             alt="Cloud Service Models IaaS PaaS SaaS — Fig. 3 (p.186)"
             width={600}
             height={380}
-            className="rounded-2xl border border-border w-full object-cover mb-2"
+            className="rounded-2xl border border-border w-full object-cover mb-2 shadow-sm"
           />
           <p className="text-xs text-muted-foreground text-center mb-6">
             Fig. 3. Cloud service models — <PageRef pages="186" />

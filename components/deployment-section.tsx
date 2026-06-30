@@ -121,7 +121,7 @@ export function DeploymentSection() {
               alt="Cloud Deployment Models — Fig. 2 (p.185)"
               width={600}
               height={340}
-              className="rounded-2xl border border-border w-full object-cover mb-2"
+              className="rounded-2xl border border-border w-full object-cover mb-2 shadow-sm"
             />
             <p className="text-xs text-muted-foreground text-center mb-4">
               Fig. 2. Cloud deployment models — <PageRef pages="185" />

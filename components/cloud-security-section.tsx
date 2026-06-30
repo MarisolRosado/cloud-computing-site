@@ -62,7 +62,7 @@ export function CloudSecuritySection() {
             alt="Cloud Security Visualization"
             width={600}
             height={380}
-            className="rounded-2xl border border-border w-full object-cover"
+            className="rounded-2xl border border-border w-full object-cover shadow-sm"
           />
         </div>
 

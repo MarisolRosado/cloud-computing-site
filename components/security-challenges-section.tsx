@@ -74,11 +74,11 @@ export function SecurityChallengesSection() {
 
         <div className="mb-10">
           <Image
-            src="/images/security-challenges.png"
+            src="/images/pastel_security_shield.png"
             alt="Security Challenges: Integrity, Confidentiality, Availability"
             width={1200}
             height={400}
-            className="rounded-2xl border border-border w-full object-cover"
+            className="rounded-2xl border border-border w-full object-cover shadow-lg"
           />
         </div>
 
