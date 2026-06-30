@@ -6,6 +6,7 @@ import { ServiceModelsSection } from "@/components/service-models-section"
 import { CloudComponentsSection } from "@/components/cloud-components-section"
 import { CloudSecuritySection } from "@/components/cloud-security-section"
 import { SecurityChallengesSection } from "@/components/security-challenges-section"
+import { TTPSection } from "@/components/ttp-section"
 import { ReferencesSection } from "@/components/references-section"
 import { Footer } from "@/components/footer"
 
@@ -20,6 +21,7 @@ export default function CloudComputingPage() {
       <CloudComponentsSection />
       <CloudSecuritySection />
       <SecurityChallengesSection />
+      <TTPSection />
       <ReferencesSection />
       <Footer />
     </main>
